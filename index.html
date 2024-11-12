@@ -2,52 +2,84 @@
 <html lang="es">
 
 <head>
-    <title>Ejemplo web API</title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo web API Mejorado</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilo.css" type="text/css" media="screen">
     <script src="codigo.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>API REST</h1>
-        <p>Sus datos personales aquí</p>
-        
+    <div class="container mt-5">
+        <h1 class="text-center text-primary mb-4">API REST</h1>
+        <p class="text-center font-weight-bold">Sus datos personales aquí</p>
+
         <!-- Datos Personales -->
-        <div class="personal-info">
+        <div class="personal-info p-3 mb-4 bg-light border rounded text-center">
             <p><strong>Guía:</strong> #61C</p>
             <p><strong>CARNET:</strong> RN22001</p>
             <p><strong>Nombre:</strong> ELEAZAR RIVAS</p>
         </div>
 
-        <div id="agregarProducto">
-            <h2>Agregar Producto</h2>
-            <form id="formAgregarProducto">
-                <input type="text" id="titulo" placeholder="Título" required />
-                <input type="text" id="descripcion" placeholder="Descripción" required />
-                <input type="number" id="precio" placeholder="Precio" step="0.01" required />
-                <input type="text" id="categoria" placeholder="Categoría" required />
-                <input type="url" id="imagen" placeholder="URL de la imagen" required />
-                <button type="button" onclick="agregarProducto()">Agregar Producto</button>
+        <!-- Formulario para agregar producto -->
+        <div id="agregarProducto" class="p-4 bg-white border rounded mb-4">
+            <h2 class="mb-3">Agregar Producto</h2>
+            <form id="formAgregarProducto" class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="titulo" placeholder="Título" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="descripcion" placeholder="Descripción" required />
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="number" class="form-control" id="precio" placeholder="Precio" step="0.01" required />
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="categoria" placeholder="Categoría" required />
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="url" class="form-control" id="imagen" placeholder="URL de la imagen" required />
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-block" onclick="agregarProducto()">Agregar Producto</button>
+                </div>
             </form>
         </div>
 
+        <!-- Botón de Obtener Productos -->
+        <div class="text-center mb-4">
+            <button class="btn btn-success" onclick="obtenerProductos(); this.style.display='none';">Obtener Productos</button>
+        </div>
         
-        <p><button class="btn-primary" onclick="obtenerProductos();this.style.display='none';">Obtener Productos</button></p>
-        
-        <div id="listado" style="display:none;">
-            <form name="filtroprods" id="filtroprods">
-                Seleccione Categorías 
-                <input type="checkbox" id="c1" value="c1" checked>Electronicos
-                <input type="checkbox" id="c2" value="c2" checked>Joyería
-                <input type="checkbox" id="c3" value="c3" checked>Ropa Caballero
-                <input type="checkbox" id="c4" value="c4" checked>Ropa Dama
-                <ol>
-                    <li>Click en la imagen para Acercamiento</li>
-                    <li>Click en precio para ordenar Asc o Desc</li>
+        <!-- Listado de productos -->
+        <div id="listado" style="display:none;" class="mb-4">
+            <form id="filtroprods" class="mb-3">
+                <p class="font-weight-bold">Seleccione Categorías:</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="c1" value="c1" checked>
+                    <label class="form-check-label" for="c1">Electrónicos</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="c2" value="c2" checked>
+                    <label class="form-check-label" for="c2">Joyería</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="c3" value="c3" checked>
+                    <label class="form-check-label" for="c3">Ropa Caballero</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="c4" value="c4" checked>
+                    <label class="form-check-label" for="c4">Ropa Dama</label>
+                </div>
+                
+                <ol class="mt-3 text-muted">
+                    <li>Click en la imagen para acercamiento</li>
+                   
                 </ol>
-                <table id="tabla">
-                    <thead>
+                
+                <table id="tabla" class="table table-bordered table-hover mt-3">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Id</th>
                             <th>Foto</th>
@@ -62,6 +94,10 @@
             </form>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
